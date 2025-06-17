@@ -13,18 +13,22 @@ class DataFilter:
                                  '98752', '98851', '98329', '98332', '98422', '98425',
                                  '98437', '98545', '98550', '98602', '98643', '98748']
     def filter_synoptic_data(self):
-        with open("SMPH01 RPMM 150000.txt") as data:
+        with open("SMPH01_RPMM_150000.txt") as data:
             for line in data:
                 if str(line[0:5]) in self.SYNOPTIC_STATIONS:
-                    with open("Synoptic Observations.txt", "a") as new_data:
+                    with open("Synoptic_Observations.txt", "a") as new_data:
                         new_data.write(line)
 
     def filter_with_cloud_group(self):
-        with open("Synoptic Observations.txt") as data:
+        with open("Synoptic_Observations.txt") as data:
             for line in data:
                 data_per_station = line.split(" ")
-                index_guide = data_per_station.index("333")
-                print(index_guide)
+                try:
+                    index_guide = data_per_station.index("333")
+                    print(index_guide)
+                except ValueError:
+                    pass
+
 
 
 
